@@ -1,0 +1,4 @@
+<!--pages/home-music/index.wxml-->
+<view class="video">
+  Home Music
+</view>
