@@ -1,0 +1,39 @@
+/* components/ranking-area-item/index.wxss */
+.item{
+  display: flex;
+  justify-content: space-between;
+  background-color: #eee;
+  border-radius: 12rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+
+.left{
+  padding: 20rpx;
+}
+
+.title{
+  font-weight: 700;
+}
+
+.song-list{
+  font-size: 24rpx;
+  color: #666;
+}
+
+.song-name{
+  color: black;
+}
+
+.song-item{
+  margin-top: 10rpx;
+}
+
+.right{
+  position: relative;
+}
+
+.image{
+  width: 200rpx;
+  height: 200rpx;
+}

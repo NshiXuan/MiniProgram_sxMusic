@@ -1,0 +1,22 @@
+/* pages/more-menu/index.wxss */
+page{
+  padding: 10rpx;
+}
+
+.more{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.item{
+  width: 45%;
+  margin-bottom: 10rpx;
+}
+
+.menu-item{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

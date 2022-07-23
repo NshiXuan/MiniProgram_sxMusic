@@ -1,0 +1,25 @@
+/* pages/detail-video/index.wxss */
+page{
+  padding-top: 225px;
+}
+
+.video{
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+.desc{
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.artist-name,.play-info{
+ display: flex;
+ font-size: 24rpx;
+ color: #666;
+}
+
+.recommend-title{
+  font-weight: 600;
+}

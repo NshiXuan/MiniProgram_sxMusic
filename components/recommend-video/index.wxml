@@ -1,0 +1,8 @@
+<!--components/recommend-video/index.wxml-->
+<view class="item margin-top">
+      <image class="image" src="{{item.coverUrl}}" mode="aspectFill"/>
+      <view class="item-info">
+        <view class="item-title text-nowrap-v2">{{item.title}}</view>
+        <view class="item-creator">{{item.creator[0].userName}}</view>
+      </view>
+</view>

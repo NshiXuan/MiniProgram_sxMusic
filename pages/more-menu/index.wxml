@@ -1,0 +1,8 @@
+<!--pages/more-menu/index.wxml-->
+<area-header title="歌单列表" showRight="{{false}}"></area-header>
+
+<view class="more">
+  <view class="item" wx:for="{{songMenu}}" wx:key="id">
+    <song-menu-item class="menu-item" item="{{item}}" bindtap="handleItemClick" data-item="{{item}}"></song-menu-item>
+  </view>
+</view>

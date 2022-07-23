@@ -1,0 +1,21 @@
+<!--pages/detail-video/index.wxml-->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+
+<video id="video" class="video" src="{{mvURLInfo.url || mvURLInfo[0].url}}" danmu-list="{{danmuList}}" referrer-policy="origin" auto-pause-if-navigate="true" bindplay="handleVideoPlay" 	bindpause="handleVideoPause">
+</video>
+
+<view class="info padding">
+  <view class="desc text-nowrap-v2">{{mvDetail.desc || mvDetail.title}}</view>
+  <view class="artist-name margin-top-bottom">{{mvDetail.artistName}}</view>
+  <view class="play-info">
+    <view class="play-count-v2">{{format.formatCount(mvDetail.playCount || mvDetail.playTime)}}播放 -</view>
+    <view class="publish-time">- {{mvDetail.publishTime}}</view>
+  </view>
+</view>
+
+<view class="recommend padding">
+  <view class="recommend-title">推荐视频</view>
+  <block wx:for="{{relatedVideos}}" wx:key="id">
+    <recommend-video item="{{item}}" bindtap="handleRecommendClick" data-item="{{item}}"></recommend-video>
+  </block>
+</view>

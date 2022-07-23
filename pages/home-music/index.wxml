@@ -1,4 +1,48 @@
 <!--pages/home-music/index.wxml-->
-<view class="video">
-  Home Music
+<!-- 搜索框 -->
+<van-search shape="round" placeholder="搜索您喜欢的歌曲" disabled bind:click-input="handleSearchClick"></van-search>
+
+<!-- 轮播图 -->
+<swiper class="swiper" indicator-dots autoplay circular style="height: {{swiperHeight}}px">
+  <block wx:for="{{banners}}" wx:key="id">
+    <swiper-item class="swiper-item">
+      <image class="swiper-image" src="{{item.pic}}" mode="widthFix" bindload="handleSwiperImageLoaded"></image>
+    </swiper-item>
+  </block>
+</swiper>
+
+<!-- 推荐歌曲 -->
+<view class="recommend-song" wx:if="{{recommendSongs.length > 0}}">
+  <area-header title="推荐歌曲" bind:click="handleMoreClick"></area-header>
+  <view class="song-list">
+    <block wx:for="{{recommendSongs}}" wx:key="id">
+      <song-item-v1 item="{{item}}" bindtap="handleSongItemClick" data-index="{{index}}"></song-item-v1>
+    </block>
+  </view>
+</view>
+
+<!-- 热门歌单 -->
+<song-menu-area title="热门歌单" songMenu="{{sliceHotSongMenu}}" wx:if="{{sliceHotSongMenu.length > 0}}" bind:click="handleMoreClick" data-type="hot"></song-menu-area>
+<song-menu-area title="推荐歌单" songMenu="{{sliceRecommendSongMenu}}" wx:if="{{sliceRecommendSongMenu.length > 0}}" bind:click="handleMoreClick" data-type="recommend"></song-menu-area>
+
+<!-- 巅峰榜 -->
+<view class="ranking" style="margin-bottom: {{currentSong.name ? 60 : 0}}px;">
+  <area-header title="巅峰榜" showRight="{{false}}"></area-header>
+  <view class="ranking-list">
+    <block wx:for="{{rankings}}" wx:key="name">
+      <ranking-area-item item="{{item}}" bindtap="handleRankingItemClick" data-item="{{item}}"></ranking-area-item>
+    </block>
+  </view>
+</view>
+
+<!-- 播放工具栏 -->
+<view class="play-bar" wx:if="{{currentSong.name}}">
+  <view class="left" bindtap="handlePlayBarClick">
+    <image class="album album-animation" mode="scaleToFill" style="animation-play-state: {{playAnimationState}};" src="{{currentSong.al.picUrl}}"></image>
+    <view class="name">{{currentSong.name}}</view>
+  </view>
+  <view class="right">
+    <image class="icon play" src="/assets/images/play/{{playName}}-blur.png" bindtap="handlePlayBtnClick"></image>
+    <image class="icon playlist" src="/assets/images/play/order-blur.png"></image>
+  </view>
 </view>

@@ -1,0 +1,37 @@
+<!--pages/detail-search/index.wxml-->
+<van-search class="search" value="{{searchValue}}" placeholder="搜索您喜欢的歌曲" shape="round" bind:change="handleSearchChange" bind:search="handleSearchAction" show-action="{{searchValue}}"></van-search>
+
+<!-- 热门搜索 -->
+<!-- <view class="hot" wx:if="{{!searchValue.length && !suggestSongs.length}}" > -->
+<view class="hot" wx:if="{{!searchValue.length}}">
+  <area-header title="热门搜索" showRight="{{false}}"></area-header>
+  <view class="list">
+    <block wx:for="{{hotKeywords}}" wx:key="first">
+      <view class="tag" bindtap="handleTagItemClick" data-keyword="{{item.first}}">{{item.first}}</view>
+    </block>
+  </view>
+</view>
+
+<!-- 搜索建议 -->
+<view class="suggest" wx:elif="{{suggestSongs.length && !resultSongs.length}}">
+  <view class="title">搜索"{{searchValue}}"</view>
+  <view class="list">
+    <block wx:for="{{suggestSongsNodes}}" wx:key="keyword">
+      <view class="item" bindtap="handleSuggestItemClick" data-index="{{index}}">
+        <image class="icon" src="/assets/images/search.png" mode="widthFix"></image>
+        <!-- <view class="text">{{item.keyword}}</view> -->
+        <rich-text nodes="{{item}}"></rich-text>
+      </view>
+    </block>
+  </view>
+</view>
+
+<!-- 搜索结果 -->
+<view class="result" wx:elif="{{resultSongs.length}}">
+  <view class="title">最佳匹配</view>
+  <view class="list">
+    <block wx:for="{{resultSongs}}" wx:key="id">
+      <song-item-v2 item="{{item}}" index="{{index+1}}">{{item.name}}</song-item-v2>
+    </block>
+  </view>
+</view>
